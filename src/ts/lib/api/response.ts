@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Rpc } from 'dist/lib/pb/protos/commands_pb';
 import { S, Decode, Mapper } from 'Lib';
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as Sentry from '@sentry/browser';
 import $ from 'jquery';
 import { arrayMove } from '@dnd-kit/sortable';

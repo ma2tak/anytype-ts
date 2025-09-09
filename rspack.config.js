@@ -34,27 +34,35 @@ module.exports = (env, argv) => {
 			},
 		},
 
-		resolve: {
-			extensions: [ '.ts', '.tsx', '.js', '.jsx' ],
-			alias: {
-				dist: path.resolve(__dirname, 'dist'),
-				protobuf: path.resolve(__dirname, 'dist/lib'),
-				json: path.resolve(__dirname, 'src/json'),
-				Lib: path.resolve(__dirname, 'src/ts/lib'),
-				Store: path.resolve(__dirname, 'src/ts/store'),
-				Component: path.resolve(__dirname, 'src/ts/component'),
-				Interface: path.resolve(__dirname, 'src/ts/interface'),
-				Model: path.resolve(__dirname, 'src/ts/model'),
-				Docs: path.resolve(__dirname, 'src/ts/docs'),
-				Hook: path.resolve(__dirname, 'src/ts/hook'),
-			},
-			modules: [
-				path.resolve('./src/'),
-				path.resolve('./electron/'),
-				path.resolve('./dist/'),
-				path.resolve('./node_modules')
-			]
-		},
+                resolve: {
+                        extensions: [ '.ts', '.tsx', '.js', '.jsx' ],
+                        alias: {
+                                dist: path.resolve(__dirname, 'dist'),
+                                protobuf: path.resolve(__dirname, 'dist/lib'),
+                                json: path.resolve(__dirname, 'src/json'),
+                                Lib: path.resolve(__dirname, 'src/ts/lib'),
+                                Store: path.resolve(__dirname, 'src/ts/store'),
+                                Component: path.resolve(__dirname, 'src/ts/component'),
+                                Interface: path.resolve(__dirname, 'src/ts/interface'),
+                                Model: path.resolve(__dirname, 'src/ts/model'),
+                                Docs: path.resolve(__dirname, 'src/ts/docs'),
+                                Hook: path.resolve(__dirname, 'src/ts/hook'),
+                        },
+                        modules: [
+                                path.resolve('./src/'),
+                                path.resolve('./electron/'),
+                                path.resolve('./dist/'),
+                                path.resolve('./node_modules')
+                        ]
+                },
+
+                externals: {
+                        'dist/lib/pb/protos/commands_pb': 'commonjs2 ./dist/lib/pb/protos/commands_pb',
+                        'dist/lib/pkg/lib/pb/model/protos/models_pb': 'commonjs2 ./dist/lib/pkg/lib/pb/model/protos/models_pb',
+                        'dist/lib/pb/protos/events_pb': 'commonjs2 ./dist/lib/pb/protos/events_pb',
+                        'dist/lib/pb/protos/service/service_grpc_web_pb': 'commonjs2 ./dist/lib/pb/protos/service/service_grpc_web_pb',
+                        'lib/json/generated/systemRelations.json': 'commonjs2 ./dist/lib/json/generated/systemRelations.json',
+                },
 
 		watchOptions: {
 			ignored: /node_modules/,
